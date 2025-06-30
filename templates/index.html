@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Outfit Classification</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <!-- Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #uploadedImage {
+      max-height: 200px;
+      object-fit: contain;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+
+<body
+  class="bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center"
+  style="background-image: url('static/alyssa-strohmann-TS--uNw-JqE-unsplash.jpg');">
+
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-gray-800 opacity-70"></div>
+
+  <!-- Main Container -->
+  <div class="relative z-10 w-full max-w-6xl p-8 glass rounded-2xl shadow-2xl text-white" data-aos="fade-up"
+    data-aos-duration="1200">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between pb-6 border-b border-gray-600">
+      <img src="/static/outfit_slogan.avif" alt="Logo" class="w-16 rounded-full shadow-md" />
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-wide">Outfit Style Classifier</h1>
+    </header>
+
+    <!-- Main Section -->
+    <main class="flex flex-col lg:flex-row gap-10 py-8">
+
+      <!-- Upload Section -->
+      
+      <div class="w-full lg:w-1/2 text-center" data-aos="fade-right">
+        <div id="uploadBox"
+        class="p-6 border-2 border-dashed border-gray-300 rounded-xl hover:border-white transition cursor-pointer"
+        onclick="triggerUploadLottie();">
+    
+        <!-- Lottie Animation -->
+        <lottie-player
+          id="lottieUpload"
+          src="static/animation_upload.json"
+          background="transparent"
+          speed="1"
+          style="width: 180px; height: 180px; margin: auto;"
+          loop
+          autoplay>
+        </lottie-player>
+
+        <p class="text-lg font-semibold mt-2">Click to Upload Image</p>
+        <img id="uploadedImage" class="hidden mx-auto rounded-lg mt-4" alt="Uploaded Image" />
+      </div>
+
+      <input type="file" id="imageInput" accept="image/*" class="hidden" onchange="previewImage(event)" />
+
+      <button
+        class="mt-6 px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-lg hover:from-indigo-500 hover:to-blue-600 transition-all duration-300 font-semibold"
+        onclick="classifyImage()">
+        Classify Image
+      </button>
+    </div>
+
+
+      <!-- Result Section -->
+      <div class="w-full lg:w-1/2 text-center space-y-6" data-aos="fade-left">
+        <h2 class="text-4xl font-bold">Result</h2>
+        <p id="result" class="text-2xl font-medium">Awaiting classification...</p>
+        <p id="accuracy" class="text-xl">Accuracy: --%</p>
+        <p id="loss" class="text-xl">Loss: --%</p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-600 pt-6 text-center text-sm">
+      <p>Made with ❤️ by <span class="font-bold">Laasya</span> & <span class="font-bold">Dharani</span></p>
+    </footer>
+  </div>
+  <script>
+  function triggerUploadLottie() {
+    const fileInput = document.getElementById('imageInput');
+    if (fileInput) {
+      fileInput.click();
+    } else {
+      console.error("File input element not found!");
+    }
+  }
+
+  function previewImage(event) {
+    const image = document.getElementById('uploadedImage');
+    if (event.target.files && event.target.files[0]) {
+      image.src = URL.createObjectURL(event.target.files[0]);
+      image.classList.remove('hidden');
+    }
+  }
+
+  function classifyImage() {
+    alert("Classification logic goes here.");
+    // Replace with your actual logic to send the image to the backend.
+  }
+</script>
+
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <script src="../static/js/index.js"></script>
+</body>
+
+</html>
