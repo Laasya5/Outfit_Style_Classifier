@@ -10,8 +10,7 @@ Upload an outfit image and instantly get the predicted category!
 -  Real-time image prediction via web interface
 -  Clean and intuitive UI with Flask
 -  Transfer learning ready (MobileNet, ResNet compatible)
--  Trained on the [Fashion Product Images Dataset](https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-dataset)
-
+-  Trained on the [Fashion Product Images Dataset]https://www.kaggle.com/datasets/agrigorev/clothing-dataset-full
 
 ##  Tech Stack
 
